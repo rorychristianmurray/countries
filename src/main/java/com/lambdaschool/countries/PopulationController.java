@@ -28,9 +28,11 @@ public class PopulationController
     @GetMapping(value = "/population/min", produces = {"application/json"})
     public ResponseEntity<?> getCountryMin()
     {
-//        ArrayList<Country> countriesBySize = CountriesApplication.ourCountryList.findCountries(c -> (c.getPopulation() >= people));
-//      countriesBySize.sort((c1, c2) -> c1.getPopulation().compareTo(c2.getPopulation()));
-//        return new ResponseEntity<>(countriesBySize, HttpStatus.OK);
+        CountriesApplication.ourCountryList.countryList.sort((c1, c2) -> c1.getPopulation() - c2.getPopulation());
+        // Gets item at index 0 in countryList ArrayList which is an object of Country type
+        Country minCountry = CountriesApplication.ourCountryList.countryList.get(0);
+        return new ResponseEntity<>(minCountry, HttpStatus.OK);
+
     }
 
 
