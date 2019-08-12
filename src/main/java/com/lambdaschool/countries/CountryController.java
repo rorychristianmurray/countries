@@ -41,6 +41,16 @@ public class CountryController // This class will manage the specific endpoints
         return new ResponseEntity<>(CountriesApplication.ourCountryList.countryList, HttpStatus.OK);
     }
 
+    // localhost:2019/data/names/start/{letter}
+    // returns JSON object with all countries sorted by name alphabetically that begin with letter provided
+    @GetMapping(value = "/names/start/{letter}", produces = {"application/json"})
+    public ResponseEntity<?> getCountriesByLetter(@PathVariable char letter)
+    {
+        ArrayList<Country> countriesByLetter = CountriesApplication.ourCountryList.findCountries(c -> (c.getName().toLowerCase().charAt(0) == Character.toLowerCase(letter)));
+        countriesByLetter.sort((c1, c2) -> c1.getName().compareToIgnoreCase(c2.getName()));
+        return new ResponseEntity<>(CountriesApplication.ourCountryList.countryList, HttpStatus.OK);
+    }
+
 
 
 
