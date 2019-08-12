@@ -24,7 +24,7 @@ public class PopulationController
     }
 
     // localhost:2019/data/population/min
-    // returns JSON object with the country with smalles population
+    // returns JSON object with the country with smallest population
     @GetMapping(value = "/population/min", produces = {"application/json"})
     public ResponseEntity<?> getCountryMin()
     {
@@ -32,7 +32,18 @@ public class PopulationController
         // Gets item at index 0 in countryList ArrayList which is an object of Country type
         Country minCountry = CountriesApplication.ourCountryList.countryList.get(0);
         return new ResponseEntity<>(minCountry, HttpStatus.OK);
+    }
 
+    // localhost:2019/data/population/max
+    // returns JSON object with the country with largest population
+    @GetMapping(value = "/population/max", produces = {"application/json"})
+    public ResponseEntity<?> getCountryMax()
+    {
+        CountriesApplication.ourCountryList.countryList.sort((c1, c2) -> c2.getPopulation() - c1.getPopulation());
+        // Gets item at index 0 in countryList ArrayList which is an object of Country type
+//        int lastIndex = CountriesApplication.ourCountryList.countryList.length - 1
+        Country maxCountry = CountriesApplication.ourCountryList.countryList.get(0);
+        return new ResponseEntity<>(maxCountry, HttpStatus.OK);
     }
 
 
