@@ -48,7 +48,7 @@ public class CountryController // This class will manage the specific endpoints
     {
         ArrayList<Country> countriesByLetter = CountriesApplication.ourCountryList.findCountries(c -> (c.getName().toLowerCase().charAt(0) == Character.toLowerCase(letter)));
         countriesByLetter.sort((c1, c2) -> c1.getName().compareToIgnoreCase(c2.getName()));
-        return new ResponseEntity<>(CountriesApplication.ourCountryList.countryList, HttpStatus.OK);
+        return new ResponseEntity<>(countriesByLetter, HttpStatus.OK);
     }
 
 
