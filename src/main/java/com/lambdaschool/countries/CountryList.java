@@ -1,5 +1,7 @@
 package com.lambdaschool.countries;
 
+import java.util.ArrayList;
+
 public class CountryList
 {
     public ArrayList<Country> countryList = new ArrayList<>();
@@ -20,6 +22,28 @@ public class CountryList
         countryList.add(new Country("Ethiopia",110135635,1000000,20));
     }
 
-    
+    public Country findCountry(CountryChecker tester)
+    {
+        for (Country c : countryList)
+        {
+            if(tester.test(c))
+            {
+                return c;
+            }
+        }
+        return null;
+    }
 
+    public ArrayList<Country> findCountries(CountryChecker tester)
+    {
+        public ArrayList<Country> tempCountryList = new ArrayList<>();
+        for (Country c : countryList)
+        {
+            if(tester.test(c))
+            {
+                tempCountryList.add(c);
+            }
+        }
+        return tempCountryList;
+    }
 }
