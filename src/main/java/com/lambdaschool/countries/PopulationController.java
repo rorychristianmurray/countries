@@ -19,8 +19,18 @@ public class PopulationController
     public ResponseEntity<?> getCountriesBySize(@PathVariable int people)
     {
         ArrayList<Country> countriesBySize = CountriesApplication.ourCountryList.findCountries(c -> (c.getPopulation() >= people));
-        countriesBySize.sort((c1, c2) -> c1.getPopulation().compareTo(c2.getPopulation()));
+//        countriesBySize.sort((c1, c2) -> c1.getPopulation().compareTo(c2.getPopulation()));
         return new ResponseEntity<>(countriesBySize, HttpStatus.OK);
+    }
+
+    // localhost:2019/data/population/min
+    // returns JSON object with the country with smalles population
+    @GetMapping(value = "/population/min", produces = {"application/json"})
+    public ResponseEntity<?> getCountryMin()
+    {
+//        ArrayList<Country> countriesBySize = CountriesApplication.ourCountryList.findCountries(c -> (c.getPopulation() >= people));
+//      countriesBySize.sort((c1, c2) -> c1.getPopulation().compareTo(c2.getPopulation()));
+//        return new ResponseEntity<>(countriesBySize, HttpStatus.OK);
     }
 
 
