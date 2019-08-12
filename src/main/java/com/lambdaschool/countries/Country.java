@@ -78,4 +78,16 @@ public class Country
     {
         this.medianAge = medianAge;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Country{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", population=" + population +
+                ", landMass=" + landMass +
+                ", medianAge=" + medianAge +
+                '}';
+    }
 }
