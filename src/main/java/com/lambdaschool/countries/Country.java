@@ -18,6 +18,8 @@ public class Country
 
     public Country(String name, int population, int landMass, int medianAge)
     {
+        this.id = counter.incrementAndGet();
+        this.name = name;
         this.population = population;
         this.landMass = landMass;
         this.medianAge = medianAge;
