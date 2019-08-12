@@ -12,10 +12,8 @@ import java.util.ArrayList;
 
 @RestController // managed by Spring Boot - mappings of end points - annotation
 @RequestMapping("/data") // all endpoints start with /data
-
-public class CountryController
+public class CountryController // This class will manage the specific endpoints
 {
-
 
     // localhost:2019/data/allcountries
     // returns JSON object with all countries data
@@ -34,8 +32,20 @@ public class CountryController
         return new ResponseEntity<>(rtnCountry, HttpStatus.OK);
     }
 
-//    // localhost:2019/data/names/all
-//    // returns JSON object with all countries sorted by name alphabetically
+    // localhost:2019/data/names/all
+    // returns JSON object with all countries sorted by name alphabetically
+    @GetMapping(value ="/names/all", produces = {"application/json"})
+    public ResponseEntity<?> getCountryNames()
+    {
+        CountriesApplication.ourCountryList.countryList.sort((c1, c2) -> c1.getName().compareToIgnoreCase(c2.getName()));
+        return new ResponseEntity<>(CountriesApplication.ourCountryList.countryList, HttpStatus.OK);
+    }
+
+
+
+
+    // localhost:2019/data/names/all
+    // returns JSON object with all countries sorted by name alphabetically
 //    @GetMapping(value = "/names/all", produces = {"application/json"})
 //    public ResponseEntity<?> getCountryNames()
 //    {
