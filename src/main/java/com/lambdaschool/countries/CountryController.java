@@ -52,6 +52,7 @@ public ResponseEntity<?> getCountriesByLetter(@PathVariable char letter)
 }
 
 
+
     // localhost:2019/data/names/all
     // returns JSON object with all countries sorted by name alphabetically
 //    @GetMapping(value = "/names/all", produces = {"application/json"})

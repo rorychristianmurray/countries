@@ -41,9 +41,17 @@ public class PopulationController
     {
         CountriesApplication.ourCountryList.countryList.sort((c1, c2) -> c2.getPopulation() - c1.getPopulation());
         // Gets item at index 0 in countryList ArrayList which is an object of Country type
-//        int lastIndex = CountriesApplication.ourCountryList.countryList.length - 1
+        // int lastIndex = CountriesApplication.ourCountryList.countryList.length - 1
         Country maxCountry = CountriesApplication.ourCountryList.countryList.get(0);
         return new ResponseEntity<>(maxCountry, HttpStatus.OK);
+    }
+
+    // localhost:2019/data/population/median
+    // returns JSON object with the country with the median population
+    @GetMapping(value = "/population/max", produces = {"application/json"})
+    public ResponseEntity<?> getCountryMax()
+    {
+
     }
 
 
