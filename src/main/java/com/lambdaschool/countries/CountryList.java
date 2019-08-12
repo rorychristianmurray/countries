@@ -36,7 +36,7 @@ public class CountryList
 
     public ArrayList<Country> findCountries(CountryChecker tester)
     {
-        public ArrayList<Country> tempCountryList = new ArrayList<>();
+        ArrayList<Country> tempCountryList = new ArrayList<>();
         for (Country c : countryList)
         {
             if(tester.test(c))
